@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>createAc</title>
+    <style>
+        body {
+            font: 87.5%/1.5em 'Open Sans', sans-serif;
+            margin: auto;
+        }
+        p {
+            line-height: 0em;
+        }
+        .login {
+            margin:auto;
+            width: 320px;
+        }
+        h1 {
+            margin: 5px;
+            text-align: center;
+        }
+        .login form {
+            padding: 30px;
+            width: 100%;
+            border-radius: 5px;
+            background: white;
+            border-top: 3px solid #434a52;
+            border-bottom: 3px solid #434a52;
+            color: black;
+        }
+        .login form input[type="email"] {
+            background-color: #dde6f0;
+            border-radius: 10px;
+            color: #a9a9a9;
+            margin-bottom: 1em;
+            padding: 0 16px;
+            width: 90%;
+            height: 50px;
+            border: 0;
+        }
+        .login form input[type="password"] {
+            background-color: #dde6f0;
+            border-radius: 10px;
+            color: #a9a9a9;
+            margin-bottom: 1em;
+            padding: 0 16px;
+            width: 90%;
+            height: 50px;
+            border: 0;
+        }
+        .login form input[type="submit"] {
+            background: #74833e;
+            border: 0;
+            width: 100%;
+            height: 40px;
+            border-radius: 3px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+        #rgstr_btn:hover {
+            background: #045226;
+        }
+        #rgstr_btn:active {
+            transform: scale(0.97);
+        }
+        #passins {
+            font-size: 10px;
+        }
+
+        .form_link {
+            color: #252c6a;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .form_link:hover {
+            text-decoration: underline;
+            color: rgb(8, 8, 138);
+        }
+        .form_text {
+            margin-top: 10px;
+            margin-bottom: 0px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <form name='form-login' id="form"> 
+         
+
+            <h1>Create New Account</h1>
+            <label for="name">Email</label>
+            <input type="email" id="name" placeholder="Username">
+            <label for="pw">Password</label>
+            <input type="password" id="pw" placeholder="Password">
+            <div id="passins">
+                <p>Password</p>
+                <ul class="helper-text">
+                    <li class="length">Must be at least 8 characters long.</li>
+                    <li class="lowercase">Must contain special characters and numbers.</li>
+                   
+                </ul>
+            </div>
+            <input id="rgstr_btn" type="submit" value="Register">
+            <p class="form_text">
+                <a href="logIn.html" class="form_link">Back to Login</a>
+            </p>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("#form").addEventListener("submit",store)
+    function store(event) {
+        event.preventDefault()
+        var name = document.getElementById('name');
+        var pw = document.getElementById('pw');
+        var lowerCaseLetters = /[a-z]/g;
+        var upperCaseLetters = /[A-Z]/g;
+        var numbers = /[0-9]/g;
+
+        if (name.value.length == 0) {
+            alert('Please fill in email');
+
+        } else if (pw.value.length == 0) {
+            alert('Please fill in password');
+
+        } else if (name.value.length == 0 && pw.value.length == 0) {
+            alert('Please fill in email and password');
+
+        } else if (pw.value.length > 8) {
+            alert('Max of 8');
+
+        } else if (!pw.value.match(numbers)) {
+            alert('please add 1 number');
+
+        } else if (!pw.value.match(upperCaseLetters)) {
+            alert('please add 1 uppercase letter');
+
+        } else if (!pw.value.match(lowerCaseLetters)) {
+            alert('please add 1 lowercase letter');
+
+        } else {
+            storeData()
+            alert('Your account has been created');
+        }
+    }
+    var dataArr=JSON.parse(localStorage.getItem("signUpData"))||[]
+    function storeData(){
+        var name=document.querySelector("#name").value 
+        var pass=document.querySelector("#pw").value
+        console.log(name,pass)
+        var dataObj={
+            name:name,
+            password:pass
+        }
+        dataArr.push(dataObj)
+        localStorage.setItem("signUpData", JSON.stringify(dataArr))
+        window.location.href="logIn.html"
+    }
+</script>

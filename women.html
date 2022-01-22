@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-gap:15px 1%;
+            border: 1px solid transparent;
+            text-align: center;
+        }
+        #box2{
+            display: flex;
+            margin: 2%;
+            border: 1px solid transparent;
+            justify-content:space-between;
+        }
+        #box1{
+            border: transparent 1px solid;
+            cursor: pointer;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        }
+        #button{
+            padding: 2% 30%;
+            border-radius: 10px;
+            color:black;
+            margin-bottom: -1px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            margin: 1%;
+        }
+        #button:hover{
+            cursor: pointer;
+            color:black;
+            background-color: rgb(134, 10, 118);
+        }
+        p+p{
+            text-decoration: line-through;
+            color:red
+        }
+        #img{
+            width: 100%;
+        }
+        #sortprice{
+            width: 30;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <select id="sortprice" onchange="sortbyprice()">
+    <option value="">Sort by price</option>
+    <option value="Low">Low to Low</option>
+    <option value="High">High to Low</option>
+    </select>
+    <select id="brand" onchange="brand()">
+        <option value="">Sort by Brand</option>
+        <option value="Zara">Zara</option>
+        <option value="Levis">Levis</option>
+        <option value="addidas">addidas</option>
+        <option value="Nike">Nike</option>
+        <option value="Prada">Prada</option>
+        <option value="Gucci">Gucci</option>
+        <option value="Uniqlo">Uniqlo</option>
+    </select>
+    <button  id="gotocart" onclick="gotocart()">Go To Cart</button>
+    <div id="main"></div>
+</body>
+</html>
+<script>
+      var womendata=JSON.parse(localStorage.getItem("womendata"))||[];
+      var cartitem=JSON.parse(localStorage.getItem("womenitems"))||[];
+    document.querySelector("#gotocart").addEventListener("click",gotocart);
+    sortprice(womendata);
+     display(womendata);
+    sortprice(select);
+    function gotocart(){
+        window.location.href="cart.html";
+    }
+      function sortbyprice(){
+          var sort=document.querySelector("#sortprice").value;
+          if(sort==="Low"){
+              console.log(sort);
+              womendata.sort(function(a,b){
+                  return a.price-b.price;
+              });
+          }
+          if(sort==="High"){
+              console.log(sort);
+               womendata.sort(function(a,b){
+                   return b.price-a.price;
+               });
+          }
+          console.log(womendata);
+          display(womendata);
+          sortprice(womendata);
+      }
+     
+      function brand(){
+         var select= document.querySelector("#brand").value;
+         
+            var filterlist= womendata.filter(function(elem){
+                 return elem.brand==select;
+             });
+      
+             sortprice(filterlist);
+        console.log(filterlist);
+      }
+
+      function sortprice(womendata){
+      document.querySelector("#main").innerHTML="";
+      womendata.map(function(data){
+      var box1=document.createElement("div");
+      box1.setAttribute("id","box1");
+      var image=document.createElement("img");
+      image.setAttribute("src",data.image_url);
+      image.setAttribute("id","img");
+      var name=document.createElement("h5");
+      name.textContent=data.name;
+      var brand=document.createElement("p");
+      brand.textContent=data.brand;
+      var box2=document.createElement("div");
+      box2.setAttribute("id","box2");
+      var price=document.createElement("p");
+      price.textContent=data.price;
+      var strike=document.createElement("p");
+      strike.textContent=data.strikedoffprice;
+      box2.append(price,strike);
+      var btn=document.createElement("button")
+      btn.textContent="Add To Cart";
+      btn.setAttribute("id","button");
+      btn.addEventListener("click",addcarditem)
+      function addcarditem(){
+          console.log(data);
+          cartitem.push(data);
+          localStorage.setItem("womenitems",JSON.stringify(cartitem));
+          
+          alert("Product Added Successfully!")
+      }
+      box1.append(image,name,brand,box2,btn);
+     
+      document.querySelector("#main").append(box1);
+  });
+      }
+      
+
+
+
+</script>

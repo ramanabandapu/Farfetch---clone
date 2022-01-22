@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       #main{
+           display: grid;
+           grid-template-columns: repeat(4,1fr);
+           gap:2%;
+           text-align: center;
+       }
+       #box2{
+           display: flex;
+           justify-content: space-between;
+           margin: 2%;
+       }
+       p+p{
+           color:red;
+           text-decoration: line-through;
+       }
+       #img{
+           width: 100%;
+           cursor: pointer;
+       }
+       #btn{
+           padding: 3% 30%;
+           color:black;
+           border-radius: 10px;
+           box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+       }
+       #btn:hover{
+           background-color: skyblue;
+           cursor: pointer;
+       }
+       #box1{
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+       }
+       #pricelist{
+           width: 40%;
+           height: 40px;
+       }
+       h3{
+           color:whitesmoke;
+       }
+       #btn1{
+           padding: 1% 9%;
+           font-weight: bolder;
+       }
+       #btn1:hover{
+           cursor: pointer;
+           background-color: rgb(158, 145, 229);
+       }
+       #pricesort, #brand{
+           width: 20%;
+           height: 50px;
+       }
+    </style>
+    <style>
+
+    </style>
+</head>
+<body>
+    <button id="btn1">Go To Cart</button>
+    <select id="pricesort" onchange="pricesorting()">
+            <option value="">Sort By price</option>
+           <option value="Low">Low To High</option>
+           <option value="High">High to Low</option>
+    </select>
+    <select id="brand" onchange="brand()">
+        <option value="">Sort By Brand</option>
+        <option value="Levis">Levis</option>
+        <option value="addidas">addidas</option>
+        <option value="Nike">Nike</option>
+        <option value="Uniqlo">Uniqlo</option>
+        <option value="Gucci">Gucci</option>
+  
+    </select>
+    <div id="main">
+    
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("#btn1").addEventListener("click",gotocart);
+    var mendata=JSON.parse(localStorage.getItem("Mensdata"))||[];
+    var cart=JSON.parse(localStorage.getItem("cart"))||[];
+    display(mendata);
+    display(filterlist);
+    function pricesorting(){
+        var pricesort=document.querySelector("#pricesort").value;
+        //  console.log(pricesort);
+        if(pricesort==="Low"){
+            console.log(pricesort);
+            mendata.sort(function(a,b){
+                return a.price-b.price;
+            });
+          } 
+       
+       else if(pricesort==="High"){
+        console.log(pricesort);
+            mendata.sort(function(a,b){
+                return b.price-a.price;
+            });
+         
+        
+      }
+    console.log(mendata);
+    display(mendata);
+    }
+    
+    function brand(){
+      var select=document.querySelector("#brand").value;
+     var filterlist = mendata.filter(function(elem){
+           return elem.brand==select;
+      });
+      console.log(filterlist);
+      display(filterlist);
+
+    }
+
+    function display(mendata){
+    document.querySelector("#main").innerHTML="";
+    mendata.map(function(data){
+    var box1=document.createElement("div");
+    box1.setAttribute("id","box1");
+    var image=document.createElement("img");
+    image.setAttribute("src",data.image_url);
+    image.setAttribute("id","img");
+    var name=document.createElement("h6");
+    name.textContent=data.name;
+    var brand=document.createElement("p");
+    brand.textContent=data.brand;
+    var box2=document.createElement("div");
+    box2.setAttribute("id","box2");
+    var price=document.createElement("p");
+    price.textContent=data.price;
+    var strikedoffprice=document.createElement("p");
+    strikedoffprice.textContent=data.strikedoffprice;
+    var btn=document.createElement("button");
+    btn.textContent="Add To Cart";
+    btn.setAttribute("id","btn");
+    btn.addEventListener("click",addcarditem)
+    function addcarditem(){
+        console.log(data);
+        cart.push(data);
+        localStorage.setItem("cart",JSON.stringify(cart));
+        alert("Product added successfully !");
+    }
+  
+    box2.append(price,strikedoffprice);
+    box1.append(image,name,brand,box2,btn);
+    document.querySelector("#main").append(box1);
+
+    });
+}
+    function gotocart(){
+        window.location.href="cart.html";
+    }
+   
+</script>

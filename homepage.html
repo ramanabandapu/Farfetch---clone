@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://kit.fontawesome.com/e0731721d5.js" crossorigin="anonymous"></script>
+    <style>
+        body{
+            font-family: Verdana, Tahoma, sans-serif;
+            
+            margin: auto;
+        }
+        #nav{
+            width: 100%;
+            color: white;
+            background-color: #ff2d44;
+            text-align: center;
+            height: 42px;
+            padding: 1px;
+            font-size: 14px;
+            font-family: Verdana, Tahoma, sans-serif;
+            cursor: pointer;
+           
+        }
+      
+        #uppernav{
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            /* position: fixed; */
+            /* background-color: white; */
+        }
+      
+        #uppernav > div:nth-child(1){
+            width: 300px;
+            display: flex;
+           justify-content: space-evenly;
+        }
+        #lowernav{
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            /* position: fixed;
+            background-color: white; */
+        }
+        #lowernav > div:nth-child(1){
+            width: 900px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        #search{
+            width: 250px;
+            height: 20px;
+            border-radius: 10px;
+            margin-left: 20px;
+            border: 0.3px solid grey;
+            padding: 15px;
+            font-size: 20px;
+        }
+        #bodydiv {
+            width: 80%;
+            margin: auto;
+           margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 520px);
+            grid-gap: 40px ;
+           
+            
+        }
+        #bodydiv > div{
+            /* border: 1px solid red; */
+           /* width: 80%; */
+            text-align: center;
+
+        }
+        img{
+/* 
+             height: 100%; */
+             width: 100%; 
+        }
+        #bodydiv>div:nth-child(2),  #bodydiv>div:nth-child(3){
+            width: 70%;
+          text-align: center;
+          margin: auto;
+            display: flex;
+            flex-direction: column;
+           /* justify-content: space-evenly; */
+            
+        }
+        button{
+            text-align: center;
+            border-radius: 10px;
+            padding: 10px 10px;
+            border: 1px solid black;
+            background-color: white;
+            font-weight: bold;
+        }
+        h1{
+            font-size: 43px;
+            font-family:  Verdana, Tahoma, sans-serif;
+        }
+        #bodydiv >  p{
+            padding: 15px;
+        }
+        #signupbar {
+            margin-top:40px;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        #signupbar > div {
+        margin-left: 25px;
+        }
+        #container  {
+            width: 90%;
+            margin: auto;
+            margin-top: 100px;
+            display: flex;
+             height: 200px; 
+         justify-content: space-around;
+        }
+        img{
+            width: 90%;
+            height: 100%;
+        }
+        #middiv{
+            text-align: center;
+            width: 70%;
+            margin: auto;
+            font-size: 30px;
+            font-weight: normal;
+            margin-top: 170px;
+        }
+        #container1{
+            margin-top: 270px;
+            display: flex;
+            justify-content: space-around;
+            /* border: 1px solid red; */
+        }
+        #container1 > div:nth-child(1){
+            width: 40%;
+            margin: auto;
+            text-align: center;
+            /* border: 1px solid yellow; */
+        }
+       #container2{
+           /* border: 1px solid red; */
+           width: 70%;
+           margin: auto;
+           margin-top: 40px;
+       }
+        #container2 > div:nth-child(1){
+            height: 30%;
+            text-align: center;
+        }
+        img{
+            width: 100%;
+        }
+        #middiv1{
+            text-align: center;
+            width: 70%;
+            margin: auto;
+            font-size: 30px;
+            font-weight: normal;
+            margin-top: 50px;
+        }
+        #container3{
+            width: 90%;
+            margin: auto;
+            margin-top: 100px;
+            display: flex;
+             height: 200px; 
+         justify-content: space-around;
+        }
+        #container4{
+            background-color: #222222;
+            color: white;
+            font-size: 15px;
+        }
+        #helppage{
+            /* border: 1px solid red; */
+          
+            height: 500px;
+            margin-top: 250px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .social{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        #terms{
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+
+
+
+        /* ********************************************************************* */
+
+        #signupMid{
+         
+         height: 400px;
+         width: 30%;
+         text-align: center;
+         margin-left: 35%;
+         margin-top: 300px;
+     }
+     #btn{
+         padding: 2% 20%;
+         color:White;
+         cursor: pointer;
+         border-radius: 10px;
+         background-color: black;
+     }
+     #btn:hover{
+         background-color:grey;
+     }
+     #signupMid > p{
+         font-size: 20px;
+        
+         cursor: pointer;
+        
+     }
+     #user{
+         height: 35px;
+         width: 300px;
+         border: 2px solid black;
+         border-radius: 10px;
+     }
+     #email{
+         height: 35px;
+         width: 300px;
+         border: 2px solid black;
+         border-radius: 10px;
+     }
+     #pas{
+         height: 35px;
+         width: 300px;
+         border: 2px solid black;
+         border-radius: 10px;
+     }
+
+                /* ****************************************************************** */
+
+
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <p>Get an extra 20% off sale  |  Final reductions  |  T&Cs</p>
+    </div>
+    <div id="nav1">
+        <div id="uppernav"> 
+           <div>
+            <p onclick="window.location.href='women.html'">Women</p>
+            <p  onclick="window.location.href='men.html'">Men</p>
+            <p>Kids</p>
+           </div>
+        
+           <div>
+               <h1>FARFETCH</h1>
+           </div>
+           <div id="signupbar">
+               <div>
+              <i class="fas fa-flag-usa"></i>
+            </div>
+            <div id="tosignin">
+                <i class="far fa-user"></i>
+            </div>
+            <div>
+               <i class="far fa-star"></i>
+            </div>
+            <div>
+               <i class="fas fa-shopping-bag"></i>
+            </div>
+            </div>
+        </div>
+        <div id="lowernav">
+            <div>
+                <p>20% off</p>
+                <p>Sale</p>
+                <p>New in</p>
+                <p>Shop by</p>
+                <p>Designers</p>
+                <p>Clothing</p>
+                <p>Shoes</p>
+                <p>Bags</p>
+                <p>Accessories</p>
+                <p>Jewellery</p>
+            </div>
+            <div>
+                <!-- search bar -->
+                <input id="search" placeholder="Search" >
+                
+            </div>
+        </div>
+    </div>
+    <div id="bodydiv">
+            <div>
+                <img src="https://cdn-static.farfetch-contents.com/cms-cm/in/media/3130232/data/6224681530f8b25e4767fc2b0d0b0e03.png?ratio=1x1_messaging-side&minWidth=637">
+            </div>
+            <div>
+                <h1>GET AN EXTRA 20% OFF SALE: FINAL REDUCTIONS</h1>
+               <p> Don't miss out on the world's greatest designers in the FARFETCH sale, 
+                now with an extra 20% off. Selected items for a limited time only;
+                 discount automatically applied at checkout</p>
+                 <button>Shop Now</button>
+            </div>
+            <div>
+                <h1>What to wear in 2022</h1>
+                <p>From streetwear-infused pieces that will elevate your 9-to-5 wardrobe
+                     to the tried-and-tested classics with a modern twist,
+                     these new-season looks will set you up for (almost) every eventuality this year</p>
+                     <button>Read and Shop</button>
+            </div>
+            <div>
+                <img src="https://cdn-static.farfetch-contents.com/cms-cm/in/media/3133854/data/32f94d6210b12cec8b5386742ba44169.jpg?ratio=1x1_messaging-side&minWidth=637">
+            </div>
+            <div>
+                <img src="https://cdn-static.farfetch-contents.com/cms-cm/in/media/3133970/data/2f6d4612b02d28ab7e672052d853ac76.jpg?ratio=1x1_two-columns&minWidth=637">
+                <p>THE VALENTINE’S DAY GIFTS YOU DESERVE</p>
+                <p>Forget the subtle hints — meet the fine watches, cult sneakers and home comforts you should ask them for immediately</p>
+            </div>
+            <div>
+                <img src="https://cdn-static.farfetch-contents.com/cms-cm/in/media/3134012/data/7b9c9bf4e3b5aec20833f00044e233a5.jpg?ratio=3x4_three-columns&minWidth=409">
+            </div>
+    </div>
+<div id="middiv">
+    <p>New in: hand-picked daily from the world’s best brands and boutiques</p>
+</div>
+
+    <div id="container"></div>
+  
+<div id="container1">
+    <div>
+        <h2>ONLY ON FARFETCH: THE CASA COLLECTION</h2>
+        <p>Shop Dholse & Gabbana</p>
+    </div>
+    <div>
+        <img src="https://cdn-static.farfetch-contents.com/cms-cm/in/media/3140448/data/dcafccaececcd4226666bd1f0584e246.jpg?ratio=1x1_messaging-side&minWidth=637">
+    </div>
+</div>
+
+<div id="container2">
+    <div>
+        <h2>The boutique style guide: streetwear edit</h2>
+        <p>Shop the world’s best destinations from home</p>
+    </div>
+    <div>
+        <img src="https://cdn-static.farfetch-contents.com/cms-cm/in/media/2691970/data/a0089ebc15ca95fa848e23145a1df5ba.jpg?ratio=914x628&minWidth=914">
+    </div>
+</div>
+
+<div id="middiv1">
+    <p>Trending now: most-wanted pieces</p>
+</div>
+
+<div id="container3"></div>
+
+
+
+       <!-- ******************************************************************* -->
+
+
+
+       <div id="signupMid">
+        <h1>SIGN UP AND GET 10% OFF</h1>
+        <p>Sign up for early sale access, new in, promotions and more</p>
+    <form>
+        <label>Username</label><br>
+        <input type="text" id="user" placeholder="Enter Username"><br><br>
+        <label>Email</label><br>
+        <input type="email" id="email" placeholder="Enter Email"><br><br>
+        <label>Password</label><br>
+        <input type="password" id="pas" placeholder="Enter Password"><br><br>
+        <input type="submit"id="btn" value="SignUp">
+        
+    </form>
+    <p>Already have an account?<a href="login.html">Login Here</a></p>
+</div>
+
+
+
+           <!-- **************************************************************************** -->
+<div id="container4">
+<div id="helppage">
+    <div>
+        <p>FARFETCH APP</p>
+        <p>Farfetch App for iOS and Android</p>
+    </div>
+    <div>
+        <div>
+        <p>DESTINATION/REGION, CURRENCY AND LANGUAGE</p>
+        <p> India, USD $</p>
+        </div>
+        <div>
+            <p>Follow Us</p>
+           
+        </div>
+        <div class="social">
+            <div><i class="fab fa-instagram"></i></div>
+            <div><i class="fab fa-facebook"></i></div>
+            <div><i class="fab fa-twitter-square"></i></div>
+            <div><i class="fab fa-snapchat"></i></div>
+            <div><i class="fab fa-pinterest"></i></div>
+            <div><i class="fab fa-youtube"></i></div>
+        </div>
+    </div>
+    <div>
+        <p>CUSTOMER SERVICE</p>
+        <p>Help & contact us</p>
+        <p>Orders & shipping</p>
+        <p>Payment & pricing</p>
+        <p>Returns & refunds</p>
+        <p>FAQs</p>
+        <p>Terms & conditions</p>
+        <p>Privacy policy</p>
+        <p>Accessibility</p>
+    </div>
+    <div>
+        <p>ABOUT FARFETCH</p>
+        <p>About Us</p>
+        <p>Investors</p>
+        <p>Boutique Partners</p>
+        <p>Affiliate Programme</p>
+        <p>Student discount</p>
+        <p>UNiDAYS</p>
+        <p>Careers</p>
+        <p>Customer Promise</p>
+        <p>FARFETCH App</p>
+        <p>Sitemap</p>
+        <p>Positively FARFETCH</p>
+    </div>
+</div>
+<div id="terms">
+    <p>'FARFETCH' and the 'FARFETCH' logo are trade marks of FARFETCH UK Limited and are registered in numerous jurisdictions around the world.
+        © Copyright 2022 FARFETCH UK Limited. All rights reserved</p>
+</div>
+</div>
+
+
+</body>
+</html>
+
+
+         <!-- *********************************************************************** -->
+
+
+
+
+<script src="homepage.js"></script>
+<script src="homepage1.js"></script>
+    
+<script>
+
+    document.querySelector("#tosignin").addEventListener("click",loginFunc);
+    function loginFunc(){
+   window.location.href="signup.html";
+    }
+
+
+    // **************************************************************************************
+
+
+
+
+    document.querySelector("form").addEventListener("submit",details);
+    var bag=JSON.parse(localStorage.getItem("signupdata"))||[];
+    function details(event){
+        event.preventDefault();
+        var username=document.querySelector("#user").value;
+        var email=document.querySelector("#email").value;
+        var password=document.querySelector("#pas").value;
+        
+        var detailsbag={
+            user:username,
+            email:email,
+            password:password,
+        };
+        
+        bag.push(detailsbag);
+        console.log(bag);
+        localStorage.setItem("signupdata",JSON.stringify(bag));
+        window.location.href="login.html";
+
+    }
+
+ 
+</script>

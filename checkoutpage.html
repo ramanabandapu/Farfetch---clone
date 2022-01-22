@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <style>
+        #main{
+            background-color: black;
+            width: 90%;
+            height: 60px;
+            border: whitesmoke 1px solid;
+            display: flex;
+            margin: auto;
+            border-radius:10px;
+            color: whitesmoke;
+            font-size: larger;
+            font-weight: bold;
+            justify-content: space-around;
+            position: fixed;
+            width: 98%;
+        
+        }
+        .left{
+            border: transparent 1px solid;
+            width: 60%;
+            cursor: pointer;
+            padding: 1% 0 0 2%;
+        }
+        .rght{
+          
+            display: flex;
+            width: 40%;
+            padding: 1% 0 0 2%;
+            cursor: pointer;
+            justify-content: space-around;
+            border:transparent 1px solid;
+        }
+        select{
+            background-color: black;
+            color: whitesmoke;
+            border:none;
+            font-size: large;
+            font-weight: bold; 
+            cursor: pointer;
+        }
+        #name{
+             color:whitesmoke;
+        }
+        #databox{
+            border: red 3px solid;
+            margin-top:500px;
+            text-align: center;
+            width: 40%;
+            height: 600px;
+            margin: auto;
+        }
+       #btn{
+           padding: 2% 20%;
+           border-radius: 5px;
+       }
+       #btn:hover{
+           color:red;
+           background-color:rgb(246, 246, 96);
+       }
+       h1{
+           background-color: skyblue;
+       }
+    </style>
+    </head>
+    <body>
+        
+            <div id="main">
+            <div class="left">Snappy</div>
+            <div class="rght">
+            <div id="about">About</div>
+            <div id="men">Mens</div>
+            <div id="women">Womens</div>
+            <div id="signup">Signup</div>
+            
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="databox">
+        <h1>CheckOut Page</h1>
+    <form id="checkform">
+        <label>Name</label><br>
+        <input type="text" id="name" placeholder="Enter your name"><br><br><br>
+        <label>Mobile Number</label><br>
+        <input type="tel" id="mob" placeholder="Enter Mobile Number"><br><br><br>
+        <label>Card Number</label><br>
+        <input id="card" type="number" placeholder="Enter your card number"><br><br><br>
+        <label>CVV</label><br>
+        <input id="cvv" type="password" placeholder="Enter Cvv"><br><br><br>
+        <label>Expiery Date</label><br>
+        <input id="expiery" type="text" placeholder="Enter expeiry date"><br><br><br>
+        <input id="btn" type="submit">        
+    </form>
+    </div>
+    </body>
+    </html>
+    <script>
+    var name= document.querySelector("#name").value;
+    var card=document.querySelector("#card").value;
+    var CVV=document.querySelector("#cvv").value;
+    var Expiery=document.querySelector("#expiery").value;
+  
+    document.querySelector("#about").addEventListener("click",about);
+    function about(){
+        window.location.href="About.html";
+    }
+    document.querySelector("#men").addEventListener("click",men);
+    function men(){
+        window.location.href="mens.html"
+    }
+    document.querySelector("#women").addEventListener("click",women)
+    function women(){
+        window.location.href="women.html";
+    } 
+    document.querySelector("#signup").addEventListener("click",signup);
+    function signup(){
+    window.location.href="signup.html";
+}
+    document.querySelector("#checkform").addEventListener("submit",gototp);
+    function gototp(event){
+    event.preventDefault();
+    // console.log("heree");
+    alert(" OTP is sent to your registered mobile number ! ");
+    window.location.href="otp.html";
+}
+    </script>
+</body>
+</html>

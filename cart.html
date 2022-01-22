@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          #main{
+           display: grid;
+           grid-template-columns: repeat(4,1fr);
+           gap:2%;
+           text-align: center;
+       }
+       #box2{
+           display: flex;
+           justify-content: space-between;
+           margin: 2%;
+       }
+       p+p{
+           color:red;
+           text-decoration: line-through;
+       }
+       #img{
+           width: 100%;
+           cursor: pointer;
+       }
+       #btn{
+           padding: 3% 30%;
+           color:black;
+           border-radius: 10px;
+           box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+       }
+       #btn:hover{
+           background-color: skyblue;
+           cursor: pointer;
+       }
+       #box1{
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+       }
+       #pricelist{
+           width: 40%;
+           height: 40px;
+       }
+       h3{
+           color:whitesmoke;
+       }
+       #checkout{
+           padding: 1% 10%;
+
+       }
+    #checkout:hover{
+        background-color: rgb(117, 7, 7);
+        cursor:progress;
+    border-color: rgb(255, 0, 0);
+    font-weight: bolder;
+    }
+    
+    #title{
+        border: transparent 1px solid;
+        width: 90%;
+        display: inline-flex;
+        font-size: larger;
+        justify-content: space-between;
+    }
+    #promo{
+        width: 20%;
+        height: 40px;
+        font-size: larger;
+    }
+    #promobtn{
+        width: 200px;
+        height: 50px;
+        margin-left: 0px;
+        border-radius: 5px;
+    }
+    #promobtn:hover{
+        background-color: rgb(50, 112, 205);
+    }
+    </style>
+</head>
+<body>
+    <button id="checkout">CheckOut Page</button>
+    <div id="title"><h1></h1>
+    <input type="text" id="promo" placeholder="Apply Promo">
+    <button id="promobtn">Promo Code</button>
+    <h2></h2></div>
+    <div id="main"></div>
+</body>
+</html>
+<script>
+
+
+    var check=document.querySelector("#checkout").addEventListener("click",checkout);
+    function checkout(){
+        window.location.href="checkoutpage.html";
+    }
+    var cartitem=JSON.parse(localStorage.getItem("cart"))||[];
+    console.log(cartitem);
+    cartitem.map(function(data){
+    var box1=document.createElement("div");
+    box1.setAttribute("id","box1");
+    var image=document.createElement("img");
+    image.setAttribute("src",data.image_url);
+    image.setAttribute("id","img");
+    var name=document.createElement("h6");
+    name.textContent=data.name;
+    var box2=document.createElement("div");
+    box2.setAttribute("id","box2");
+    var price=document.createElement("p");
+    price.textContent=data.price;
+    var strikedoffprice=document.createElement("p");
+    strikedoffprice.textContent=data.strikedoffprice;
+    var btn=document.createElement("button");
+    btn.textContent="Add To Cart";
+    btn.setAttribute("id","btn");
+    box2.append(price,strikedoffprice);
+    box1.append(image,name,box2,btn);
+    document.querySelector("#main").append(box1);
+
+    });
+
+    var cartitem1=JSON.parse(localStorage.getItem("womenitems"))||[];
+    cartitem1.map(function(data){
+    var box1=document.createElement("div");
+    box1.setAttribute("id","box1");
+    var image=document.createElement("img");
+    image.setAttribute("src",data.image_url);
+    image.setAttribute("id","img");
+    var name=document.createElement("h6");
+    name.textContent=data.name;
+    var box2=document.createElement("div");
+    box2.setAttribute("id","box2");
+    var price=document.createElement("p");
+    price.textContent=data.price;
+    var strikedoffprice=document.createElement("p");
+    strikedoffprice.textContent=data.strikedoffprice;
+    var btn=document.createElement("button");
+    btn.textContent="Add To Cart";
+    btn.setAttribute("id","btn");
+    box2.append(price,strikedoffprice);
+    box1.append(image,name,box2,btn);
+    document.querySelector("#main").append(box1);
+
+    }); 
+    var Total1=cartitem1.reduce(function(ac,cv){
+    return ac+Number(cv.price);
+    },0);
+    
+    var Total2=cartitem.reduce(function(ac,cv){
+    return ac+Number(cv.price);
+    },0);
+
+    var Total=Total1+Total2;
+    document.querySelector("h1").textContent=`Total amount is : ${Total}`
+    var Quantity1=cartitem.length;
+    var Quantity2=cartitem1.length;
+    var sum=Quantity1+Quantity2;
+    document.querySelector("h2").textContent=`Quantity :  ${sum}`
+
+
+     
+    var addpromo=document.querySelector("#promobtn").addEventListener("click",promocode);
+    function promocode(){
+    var promo=document.querySelector("#promo").value;
+    if(promo==="masai30"){
+       var discount=Math.floor(Total*(30/100));
+       alert("You got"+" "+"30%"+"discount");
+     
+    }
+    //  console.log(promo);
+    if(promo=="masai30"){
+        document.querySelector("h1").textContent=`Total amount is : ${discount}` 
+    }
+    else{
+        document.querySelector("h1").textContent=`Total amount is : ${Total}`
+        alert("No discount !");
+    }
+    }
+</script>
